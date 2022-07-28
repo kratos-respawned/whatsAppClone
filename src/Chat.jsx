@@ -1,6 +1,7 @@
 import {
   AttachFile,
   InsertEmoticon,
+  Mic,
   MoreVert,
   Search,
 } from "@mui/icons-material";
@@ -59,6 +60,7 @@ function Chat() {
             Send a message
           </button>
         </form>
+        <Mic />
       </div>
     </div>
   );
