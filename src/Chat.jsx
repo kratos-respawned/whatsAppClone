@@ -8,11 +8,18 @@ import {
 import { Avatar, Icon, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
+import axios from "./axios";
 function Chat({ messages }) {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
-  let sendMessage = (e) => {
+  let sendMessage = async (e) => {
     e.preventDefault();
+    await axios.post("/messages/new", {
+      message: input,
+      name: "Sender",
+      time: "Test",
+      received: false,
+    });
     console.log(input);
     setInput("");
   };
