@@ -9,6 +9,7 @@ import { Avatar, Icon, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
 import axios from "./axios";
+import Message from "./Message";
 function Chat({ messages }) {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
@@ -47,20 +48,8 @@ function Chat({ messages }) {
         </div>
       </div>
       <div className="chat_body">
-        {console.log(messages)}
         {messages.map((message, key) => {
-          return (
-            <p
-              key={message._id}
-              className={`chat__message ${
-                message.received && "chat__receiver"
-              }`}
-            >
-              <span className="chat__name">{message.name}</span>
-              {message.message}
-              <span className="chat__timestamp">{message.time}</span>
-            </p>
-          );
+          return <Message data={message} />;
         })}
       </div>
       <div className="chat_footer">
