@@ -8,7 +8,7 @@ import {
 import { Avatar, Icon, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
-function Chat() {
+function Chat({ messages }) {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
   let sendMessage = (e) => {
@@ -40,11 +40,21 @@ function Chat() {
         </div>
       </div>
       <div className="chat_body">
-        <p className={`chat__message ${true && "chat__reciever"}`}>
-          <span className="chat__name">Raghav</span>
-          hiii
-          <span className="chat__timestamp">3:53pm</span>
-        </p>
+        {console.log(messages)}
+        {messages.map((message, key) => {
+          return (
+            <p
+              key={message._id}
+              className={`chat__message ${
+                message.received && "chat__receiver"
+              }`}
+            >
+              <span className="chat__name">{message.name}</span>
+              {message.message}
+              <span className="chat__timestamp">{message.time}</span>
+            </p>
+          );
+        })}
       </div>
       <div className="chat_footer">
         <InsertEmoticon />
