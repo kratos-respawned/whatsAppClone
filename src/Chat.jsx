@@ -21,7 +21,7 @@ function Chat({ messages }) {
       time: "Test",
       received: false,
     });
-    console.log(input);
+
     setInput("");
   };
   useEffect(() => {
